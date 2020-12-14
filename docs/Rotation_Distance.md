@@ -72,9 +72,10 @@ For example, the common "T8 leadscrew" has a rotation distance of 8
 (it has a pitch of 2mm and has 4 separate threads).
 
 Older printers with "threaded rods" have only one "thread" on the lead
-screw and thus the rotation distance is the pitch of the screw. (So,
-for example, an M6 metric rod has a rotation distance of 1, and an M8
-rod has a rotation distance of 1.25.)
+screw and thus the rotation distance is the pitch of the screw. (The
+screw pitch is the distance between each groove on the screw.) So, for
+example, an M6 metric rod has a rotation distance of 1, and an M8 rod
+has a rotation distance of 1.25.
 
 # Calibrating rotation_distance on extruders
 
@@ -115,31 +116,29 @@ Note: Do *not* use a "measure and trim" type of method to calibrate x,
 y, z, or other kinematic axis. The "measure and trim" method is not
 accurate enough for those axes and will likely lead to a worse
 configuration. Instead, if needed, those axes can be determined by
-measuring the belts, pulleys, and lead screw hardware as discussed in
-the sections above.
+[measuring the belts, pulleys, and lead screw hardware](#obtaining-rotation_distance-by-inspecting-the-hardware).
 
 # Using a gear_ratio
 
 Setting a `gear_ratio` can make it easier to configure the
 `rotation_distance` on steppers that have a gear box (or similar)
 attached to it. Most steppers do not have a gear box - if unsure then
-do not set `gear_ratio`.
+do not set `gear_ratio` in the config.
 
 When `gear_ratio` is set, the `rotation_distance` represents the
 distance the axis moves with one full rotation of the final gear on
 the gear box. If, for example, one is using a gearbox with a "5:1"
 ratio, then one could calculate the rotation_distance from
 [knowledge of the hardware](#obtaining-rotation_distance-by-inspecting-the-hardware)
-and then add `gear_ratio: 5:1` to the config. Note that the common
-"5.18:1 planetary gearbox" is more accurately configured with
-`gear_ratio: 57:11`.
+and then add `gear_ratio: 5:1` to the config.
 
 For gearing implemented with belts and pulleys, it is possible to
 determine the gear_ratio by counting the teeth on the pulleys. For
 example, if a stepper with a 16 toothed pulley drives the next pulley
 with 80 teeth then one would use `gear_ratio: 80:16`. Indeed, one
-could open a common off the shelf "gear boxes" and count the teeth in
-them to confirm their gear ratio.
+could open a common off the shelf "gear box" and count the teeth in it
+to confirm its gear ratio. Note that the common "5.18:1 planetary
+gearbox" is more accurately configured with `gear_ratio: 57:11`.
 
 If several gears are used on an axis then it is possible to provide a
 comma separate list to gear_ratio. For example, a "5:1" gear box
