@@ -113,9 +113,9 @@ by more than about 2mm then it is a good idea to perform the steps
 above a second time.
 
 Note: Do *not* use a "measure and trim" type of method to calibrate x,
-y, z, or other kinematic axis. The "measure and trim" method is not
-accurate enough for those axes and will likely lead to a worse
-configuration. Instead, if needed, those axes can be determined by
+y, or z type axes. The "measure and trim" method is not accurate
+enough for those axes and will likely lead to a worse configuration.
+Instead, if needed, those axes can be determined by
 [measuring the belts, pulleys, and lead screw hardware](#obtaining-rotation_distance-by-inspecting-the-hardware).
 
 # Using a gear_ratio
@@ -128,7 +128,7 @@ do not set `gear_ratio` in the config.
 When `gear_ratio` is set, the `rotation_distance` represents the
 distance the axis moves with one full rotation of the final gear on
 the gear box. If, for example, one is using a gearbox with a "5:1"
-ratio, then one could calculate the rotation_distance from
+ratio, then one could calculate the rotation_distance with
 [knowledge of the hardware](#obtaining-rotation_distance-by-inspecting-the-hardware)
 and then add `gear_ratio: 5:1` to the config.
 
@@ -141,7 +141,7 @@ to confirm its gear ratio. Note that the common "5.18:1 planetary
 gearbox" is more accurately configured with `gear_ratio: 57:11`.
 
 If several gears are used on an axis then it is possible to provide a
-comma separate list to gear_ratio. For example, a "5:1" gear box
+comma separated list to gear_ratio. For example, a "5:1" gear box
 driving a 16 toothed to 80 toothed pulley could use `gear_ratio: 5:1,
 80:16`.
 
